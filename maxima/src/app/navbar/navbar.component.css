@@ -1,0 +1,132 @@
+.navbarMa{
+    bottom: 0%;
+    background: #FFFFFF;
+    border-radius: 4px;
+    height: 3rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;    
+}
+
+.logo {
+    width: 10%;
+    margin-right: 2%;
+    height: 55%;
+    margin-top: 1%;
+    cursor: pointer;
+}
+
+.listNavbar {
+    list-style-type: none;
+}
+
+.listNavbar li{
+font-family: Euclid Circular B;
+font-size: 16px;
+line-height: 25px;
+/* or 156% */
+color: #373A3C;
+}
+
+
+ul {
+    margin: 0;
+    padding-left: 0;
+    position: relative;
+  display: inline-block;
+}
+
+li {
+    display: flex;
+    float: left;
+    padding: 1rem;
+    text-decoration: none;
+    transition-duration: 0.5s;
+}
+
+li:hover {
+    cursor: pointer;
+}
+
+
+li:focus-within a {
+    outline: none;
+}
+
+li a {
+    text-decoration: none;
+    
+    width: 6rem;
+    color: black;
+    font-size: 16px;
+}
+
+ul li ul {
+    margin-top: 2rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s ease;
+    display: none;
+    position: absolute;
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    box-sizing: border-box;
+    border-radius: 4px;
+    flex-wrap: wrap;
+    min-width: 9rem;
+    z-index: 1;
+
+}
+
+ul li:hover>ul, ul li:focus-within>ul, ul li ul:hover, ul li ul:focus {
+    visibility: visible;
+    opacity: 1;
+    display: block
+}
+
+ul li ul li {
+    clear: both;
+    width: 100%;
+}
+
+.liTitulo{
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+font-family: Euclid Circular B;
+font-size: 16px;
+line-height: 16px;
+/* identical to box height, or 100% */
+
+
+color: rgba(0, 0, 0, 0.8);
+}
+
+.liTitulo::after{
+    content: "   ";    
+    display: inline-block;
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #000;
+
+}
+
+.seta-baixo {
+ /*   background: #000000;
+    transform: matrix(1, 0, 0, -1, 0, 0);
+    */
+
+    position: absolute;
+    left: 24.03%;
+    right: 75.56%;
+    top: 57.41%;
+    bottom: 35.19%;
+
+    background: #000000;
+    transform: matrix(1, 0, 0, -1, 0, 0);
+     
+  }

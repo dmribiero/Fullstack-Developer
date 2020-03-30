@@ -1,0 +1,15 @@
+.box {
+    display: flex;
+    flex-flow: column;
+    background: #E5E5E5;  
+}
+
+.boxContent {
+    height: 100%;
+    padding: 2em 1em 1em 2em;
+    
+}
+
+
+
+

@@ -1,0 +1,31 @@
+<div class="container">
+    <span class="tituloPedido">Consulta Pedido</span>
+
+    <div class="card">
+        <div class="card-title">
+            <img src="./assets/icones/icone-pedidos.png" alt="">
+            <span>Pedidos</span>           
+        </div>
+
+       <table class="table table-striped" >
+            <thead>
+              <tr>
+                <th scope="col">#</th>              
+                <th scope="col">Valor total</th>
+                <th scope="col">Quant. de itens</th>
+                <th scope="col">Valor do frete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let i of pedido">
+                <th scope="row">{{i.codigo}}</th>                
+                <td>{{i.valorFrete | currency: 'BRL'}}</td>
+                <td>{{i.qtdItens}}</td>
+                <td>{{i.valorTotal | currency: 'BRL'}}</td>
+              </tr>                
+            </tbody>
+          </table>          
+  </div>
+</div>
+    
+

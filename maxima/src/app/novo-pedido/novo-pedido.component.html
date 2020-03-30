@@ -1,0 +1,116 @@
+<div class="container">
+    <span class="tituloPedido">Novo Pedido #{{codigoPedido}}</span>
+ 
+    <div class="card">
+        <div class="card-title">
+            <img src="./assets/icones/icone-cliente.png" alt="">
+            <span>Cliente</span>           
+        </div>
+        <div class="card-content">                     
+        <form id="customer-form" [formGroup]="clienteFormControl" >
+                <input  name="formClientes" matInput  [matAutocomplete]="customerAutoComplete" 
+                    placeholder="Informe um cliente*" type="search" class="form-control" required />                    
+                    <img src="./assets/icones/icone-pesquisa.png" alt="" class="lupa">
+
+                <mat-autocomplete #customerAutoComplete="matAutocomplete">
+                    <mat-option *ngFor="let clientes of clientes" [value]="clientes.nome">
+                        {{clientes.codigo}} - {{clientes.nome | titlecase}}
+                    </mat-option>
+                </mat-autocomplete> 
+        </form>
+          
+        </div>
+
+    </div>
+
+    <div class="card" id="cart-card">
+        <div class="card-title">
+            <img src="./assets/icones/icone-carrinho.png" alt="">
+            <span>Carrinho</span>
+        </div>
+        <div class="card-content">            
+            <form id="customer-form" [formGroup]="produtosFormControl" >
+                <input  name="formProdutos" matInput  [matAutocomplete]="produtosAutoComplete" 
+                    placeholder="Pesquise um produto*" type="search" class="form-control"  />                    
+                    <img src="./assets/icones/icone-pesquisa.png" alt="" class="lupa">                            
+
+                <mat-autocomplete #produtosAutoComplete="matAutocomplete">
+                    <mat-option *ngFor="let produtos of produtos" (click)="addCarrinho(produtos)">                            
+                            {{produtos.codigo}} - {{produtos.nome | titlecase}}
+                    </mat-option>
+                </mat-autocomplete> 
+            </form>
+
+        </div>        
+
+        <div class="carrinho" >
+            <div id="c" *ngFor="let prod of carrinho let i = index">                                   
+                <mat-divider></mat-divider>
+                <div class="produtoCarrinho">                                    
+                   <img src="./assets/icones/{{prod.codigo}}.png" alt="" matInput class="imgProduto">
+                    <div class="carrinhoLabel">
+                        <span class="labelCodigoProduto">{{prod.codigo}}</span>
+                        <span class="labelNomeProduto">{{prod.nome}}</span>
+                    </div>
+                </div>
+            
+                <div class="labelPrecoProduto">
+                    <div class="boxCarrinho">
+                        <div>
+                            <input class="form-control" id="inputQtdItens"  type="number" min="0" [value]="prod.qtd_itens"
+                                 (click)="atualizarPreco(prod,$event.target.value)" aria-label="number">
+                            <span id="valorItem"> x {{prod.precoUnitario | currency: 'BRL'}} </span>
+                        </div>
+            
+                            <span id="valorTotalItem">
+                              {{prod.valorItens | currency: 'BRL'}}</span>
+                    </div>                            
+                            <img src="./assets/icones/icone-apagar.png" alt="" title="Exclir prudoto" (click)="removeProdutos(prod)"
+                                title="Excluir da lista" class="imgItemExcluir"/>                            
+                </div> 
+                <mat-divider></mat-divider>              
+            </div> 
+        </div>
+                       
+        <div class="cartVazio" *ngIf="1 > carrinho?.length" >
+            <img src="./assets/icones/imagem-carrinho-empty-state.png" height="110px" alt="carrinho vazio">
+            <span class="cartVazioh1">Carrinho vazio</span>
+            <span class="cartVazioh2">Nenhum produto foi inserido</span>
+        </div>       
+    </div>
+
+    
+    <div class="card" id="totalPedido">
+        <div class="card-title">
+            <img src="./assets/icones/icone-total.png" alt="">
+            <span>Total</span>
+        </div>
+
+        <div class="card-content" id="contentCard">
+            <div class="finalizarPedido">
+                <div class="finalizarPedidoItens">
+                    <span class="labelNome">Itens</span>
+                    <span>{{precoTotalProduto | currency: 'BRL'}}</span>
+                </div>
+                <div class="finalizarPedidoItens">
+                        <span class="labelNome">Frete</span>
+                        <span>{{precoFrete | currency: 'BRL'}}</span>
+                </div>
+                <span class="linha"></span>
+                <div class="finalizarPedidoItens">
+                        <span class="labelNome">Total</span>
+                        <span>{{precoTotal | currency: 'BRL'}}</span>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button class="buttonsFinalizar" [disabled]="1 > carrinho?.length" type="submit" form="customer-form" (click)="finalizarPedido()"> Finalizar pedido</button>
+                <button class="buttonsLimpar" type="submit" (click)="clearCarrinho()">Limpar Carrinho</button>        
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+
